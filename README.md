@@ -1,6 +1,6 @@
 # swift-acoustics-turbulence
 
-Use this package when a sound comes from moving air: a wire or twig whistling its aeolian tone, the gusts that bend that tone, and the broadband rush of a thicket of many twigs at once. Start from `Acoustics.Turbulence.Wind`, a gust (`Acoustics.Turbulence.Gust`) and the bodies in it (`Acoustics.Turbulence.Body`, each a `Cylinder` at a distance, or `.thicket(…)`), and read its sound pressure with `pressures(count:interval:)`.
+Use this package when a sound comes from moving air: a wire or twig whistling its aeolian tone, the gusts that bend that tone, the broadband rush of a thicket of many twigs at once, the noise of a jet (`Acoustics.Turbulence.Jet`) and the roar of a small flame burning in one (`Acoustics.Turbulence.Flame`). Start from `Acoustics.Turbulence.Wind`, a gust (`Acoustics.Turbulence.Gust`) and the bodies in it (`Acoustics.Turbulence.Body`, each a `Cylinder` at a distance, or `.thicket(…)`), and read its sound pressure with `pressures(count:interval:)`.
 
 ## Laws
 
@@ -10,3 +10,5 @@ Use this package when a sound comes from moving air: a wire or twig whistling it
 - C′L and Λ are given, never assumed: both depend on the Reynolds number (Norberg 2003 reviews the measurements).
 - Gusts have von Kármán's spectrum, S(f) = 4 σ² (L / U) / (1 + 70.8 (f L / U)²)^(5/6) (IEC 61400-1): it integrates to σ² to 0.1%, and falls as f^(−5/3). A realization is Shinozuka and Deodatis's (1991) sum of cosines over bands spaced evenly in log frequency, with phases from swift-threefry, so the same seed gives the same wind everywhere.
 - `pressures` reads the gust every 32 samples; each body's tone takes that speed's shedding frequency and glides to its amplitude, √2 p_rms. A tone at or above half the sampling rate is silent. A wire in steady wind measures at its shedding frequency to 0.1% and its level to 1%.
+- A jet's noise is Lighthill's (1952, 1954): W = K ρ U⁸ D² / c⁵, K = 3 × 10⁻⁵ (chosen, the low end of the values the law is quoted with), spread evenly over a sphere, so twice the speed is 24 dB louder. A realization is white noise from swift-threefry through a band-pass of two equal poles at St U / D, St = 0.2 (chosen), in Zavalishin's state-variable form, divided by its exact root-mean-square value 2a / (1 + a)², a = tan(π f / fₛ); a steady jet's realization has the law's level to 5%.
+- A flame is a monopole of its heat release, p = (γ − 1) / (4π c² r) dQ̇/dt (Hurle, Price, Sugden and Thomas 1968; Strahle 1971). Its heat release flickers with the jet's turbulence, once more low-passed so that the sound falls as f⁻² above its peak (chosen). A steady flame is silent; a steadily growing one presses steadily.

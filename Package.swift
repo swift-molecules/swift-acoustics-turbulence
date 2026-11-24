@@ -18,6 +18,7 @@ let package = Package(
         .package(url: "https://github.com/swift-molecules/swift-acoustics.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-frequency.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-numeric.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-power.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-pressure.git", branch: "main"),
         .package(url: "https://github.com/swift-atoms/swift-threefry.git", branch: "main"),
     ],
@@ -28,6 +29,7 @@ let package = Package(
                 .product(name: "Acoustics", package: "swift-acoustics"),
                 .product(name: "Frequency", package: "swift-frequency"),
                 .product(name: "Numeric", package: "swift-numeric"),
+                .product(name: "Power", package: "swift-power"),
                 .product(name: "Pressure", package: "swift-pressure"),
                 .product(name: "Threefry", package: "swift-threefry"),
             ]
