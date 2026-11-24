@@ -1,7 +1,7 @@
 internal import Numeric
 internal import Threefry
 
-extension Acoustics.Turbulence.Wind {
+extension Acoustics.Turbulence {
     /// A cylinder in the wind, where it is from the listener.
     public struct Body: Hashable, Sendable {
         public var cylinder: Acoustics.Turbulence.Cylinder
@@ -22,7 +22,7 @@ extension Acoustics.Turbulence.Wind {
     }
 }
 
-extension Acoustics.Turbulence.Wind.Body {
+extension Acoustics.Turbulence.Body {
     /// `count` twigs: diameters spread evenly in log between `thinnest` and `thickest`, distances evenly between
     /// `nearest` and `farthest`, and alignments evenly in [−1, 1], so that their lift points every way. Each is
     /// `span` long, with lift coefficient `lift` and a correlation length of `correlation` diameters.

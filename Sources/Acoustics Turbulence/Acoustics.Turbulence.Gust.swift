@@ -65,20 +65,6 @@ extension Acoustics.Turbulence.Gust {
         }
     }
 
-    struct Bands: Sendable {
-        var amplitudes: [Double]
-        var angular: [Double]
-        var phases: [Double]
-
-        func value(at t: Double) -> Double {
-            var sum = 0.0
-            for k in amplitudes.indices {
-                sum += amplitudes[k] * Double.math.cos(angular[k] * t + phases[k])
-            }
-            return sum
-        }
-    }
-
     func bands(duration: Double, highest: Double, components: Int, seed: UInt64) -> Bands {
         guard deviation.underlying > 0, components > 0, duration > 0 else {
             return Bands(amplitudes: [], angular: [], phases: [])

@@ -40,10 +40,16 @@ import Testing
 
     @Test func `segments further apart than the correlation length add in power`() {
         let short = Acoustics.Turbulence.Cylinder(
-            diameter: wire.diameter, span: Space.Physical.metres(0.02), lift: 0.5, correlation: wire.correlation
+            diameter: wire.diameter,
+            span: Space.Physical.metres(0.02),
+            lift: 0.5,
+            correlation: wire.correlation
         )
         let long = Acoustics.Turbulence.Cylinder(
-            diameter: wire.diameter, span: Space.Physical.metres(0.08), lift: 0.5, correlation: wire.correlation
+            diameter: wire.diameter,
+            span: Space.Physical.metres(0.08),
+            lift: 0.5,
+            correlation: wire.correlation
         )
         let speed = Velocity.amount(10.0)
         let one = short.pressure(speed: speed, air: .room, distance: Space.Physical.metres(1), alignment: 1)

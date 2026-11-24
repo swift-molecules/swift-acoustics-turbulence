@@ -1,6 +1,6 @@
 # swift-acoustics-turbulence
 
-Use this package when a sound comes from moving air: a wire or twig whistling its aeolian tone, the gusts that bend that tone, and the broadband rush of a thicket of many twigs at once. Start from `Acoustics.Turbulence.Wind`, a gust (`Acoustics.Turbulence.Gust`) and the bodies in it (`Acoustics.Turbulence.Wind.Body`, each a `Cylinder` at a distance, or `.thicket(…)`), and read its sound pressure with `pressures(count:interval:)`.
+Use this package when a sound comes from moving air: a wire or twig whistling its aeolian tone, the gusts that bend that tone, and the broadband rush of a thicket of many twigs at once. Start from `Acoustics.Turbulence.Wind`, a gust (`Acoustics.Turbulence.Gust`) and the bodies in it (`Acoustics.Turbulence.Body`, each a `Cylinder` at a distance, or `.thicket(…)`), and read its sound pressure with `pressures(count:interval:)`.
 
 ## Laws
 

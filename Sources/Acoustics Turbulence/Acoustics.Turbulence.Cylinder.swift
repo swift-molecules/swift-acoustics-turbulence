@@ -57,7 +57,8 @@ extension Acoustics.Turbulence.Cylinder {
         let length = span.underlying
         let coherent = Swift.min(length, correlation.underlying)
         let force = 0.5 * air.density.underlying * u * u * diameter.underlying * lift
-        let p = omega * force * alignment * (length * coherent).squareRoot()
+        let p =
+            omega * force * alignment * (length * coherent).squareRoot()
             / (4 * Double.pi * air.speed.underlying * distance.underlying)
         return Pressure.pascals(Swift.abs(p))
     }

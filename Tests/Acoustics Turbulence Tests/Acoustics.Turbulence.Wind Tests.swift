@@ -31,7 +31,9 @@ import Testing
 
     @Test func `a tone above half the sampling rate is silent`() {
         let pin = Acoustics.Turbulence.Cylinder(
-            diameter: Space.Physical.metres(0.0001), span: Space.Physical.metres(0.1), lift: 0.5,
+            diameter: Space.Physical.metres(0.0001),
+            span: Space.Physical.metres(0.1),
+            lift: 0.5,
             correlation: Space.Physical.metres(0.0005)
         )
         let wind = Acoustics.Turbulence.Wind(
@@ -43,7 +45,7 @@ import Testing
     }
 
     @Test func `a thicket is the same for the same seed and spreads its twigs as asked`() {
-        let twigs = Acoustics.Turbulence.Wind.Body.thicket(
+        let twigs = Acoustics.Turbulence.Body.thicket(
             count: 40,
             thinnest: Space.Physical.metres(0.002),
             thickest: Space.Physical.metres(0.02),
@@ -58,7 +60,9 @@ import Testing
         #expect(twigs.allSatisfy { $0.distance.underlying >= 2 && $0.distance.underlying <= 10 })
         #expect(twigs.allSatisfy { abs($0.alignment) <= 1 })
         let gust = Acoustics.Turbulence.Gust(
-            mean: Velocity.amount(8), deviation: Velocity.amount(2), scale: Space.Physical.metres(40)
+            mean: Velocity.amount(8),
+            deviation: Velocity.amount(2),
+            scale: Space.Physical.metres(40)
         )
         let a = Acoustics.Turbulence.Wind(gust: gust, bodies: twigs, seed: 5)
         let interval = Time.Duration.amount(1 / rate)
